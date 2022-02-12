@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "LocationPicker",
+        "repositoryURL": "https://github.com/almassapargali/LocationPicker.git",
+        "state": {
+          "branch": null,
+          "revision": "b9c4bbe995e52125ce723b823876ad87c76adc5d",
+          "version": "1.4.3"
+        }
+      },
+      {
+        "package": "SwiftMessages",
+        "repositoryURL": "https://github.com/SwiftKickMobile/SwiftMessages.git",
+        "state": {
+          "branch": null,
+          "revision": "b29dd21090b708aa0ae9ecbaf6e2d0487028dc3f",
+          "version": "9.0.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

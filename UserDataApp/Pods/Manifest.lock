@@ -1,0 +1,66 @@
+PODS:
+  - Differentiator (5.0.0)
+  - IQKeyboardManagerSwift (6.5.6)
+  - "NSObject+Rx (5.2.2)":
+    - RxSwift (~> 6.2)
+  - PhoneNumberKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.3.3)
+    - PhoneNumberKit/UIKit (= 3.3.3)
+  - PhoneNumberKit/PhoneNumberKitCore (3.3.3)
+  - PhoneNumberKit/UIKit (3.3.3):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - RxCocoa (6.2.0):
+    - RxRelay (= 6.2.0)
+    - RxSwift (= 6.2.0)
+  - RxDataSources (5.0.0):
+    - Differentiator (~> 5.0)
+    - RxCocoa (~> 6.0)
+    - RxSwift (~> 6.0)
+  - RxRelay (6.2.0):
+    - RxSwift (= 6.2.0)
+  - RxSwift (6.2.0)
+  - SkyFloatingLabelTextField (3.8.0)
+  - SnapKit (5.0.1)
+  - SwiftyBeaver (1.9.5)
+
+DEPENDENCIES:
+  - IQKeyboardManagerSwift
+  - "NSObject+Rx"
+  - PhoneNumberKit (~> 3.3)
+  - RxCocoa
+  - RxDataSources
+  - RxSwift
+  - SkyFloatingLabelTextField (~> 3.0)
+  - SnapKit
+  - SwiftyBeaver
+
+SPEC REPOS:
+  trunk:
+    - Differentiator
+    - IQKeyboardManagerSwift
+    - "NSObject+Rx"
+    - PhoneNumberKit
+    - RxCocoa
+    - RxDataSources
+    - RxRelay
+    - RxSwift
+    - SkyFloatingLabelTextField
+    - SnapKit
+    - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  Differentiator: e8497ceab83c1b10ca233716d547b9af21b9344d
+  IQKeyboardManagerSwift: c7df9d2deb356c04522f5c4b7b6e4ce4d8ed94fe
+  "NSObject+Rx": 61cf1f7306a73dcef8b36649198af0813ec18dfd
+  PhoneNumberKit: 4ce83273551c4d2ae10b7361162f4283dd02835f
+  RxCocoa: 4baf94bb35f2c0ab31bc0cb9f1900155f646ba42
+  RxDataSources: aa47cc1ed6c500fa0dfecac5c979b723542d79cf
+  RxRelay: e72dbfd157807478401ef1982e1c61c945c94b2f
+  RxSwift: d356ab7bee873611322f134c5f9ef379fa183d8f
+  SkyFloatingLabelTextField: 5a338412114808e961fe2d14ea2c5452c8b6e4aa
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
+  SwiftyBeaver: 84069991dd5dca07d7069100985badaca7f0ce82
+
+PODFILE CHECKSUM: 6a1c75c912298cd43a021a3fb238ef11605072f0
+
+COCOAPODS: 1.10.1
