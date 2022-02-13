@@ -153,7 +153,17 @@ func saveImage(data: Data, name: String? = UUID().uuidString) -> URL? {
     return nil
 }
 
-
+func removeFile(_ fileName: String) {
+    guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else { return  }
+    do {
+        let targetURL = documentsDirectory.appendingPathComponent(fileName)
+        if FileManager.default.fileExists(atPath: targetURL.path) {
+            try FileManager.default.removeItem(at: targetURL)
+        }
+    } catch {
+        print(error.localizedDescription)
+    }
+}
 
 
 //MARK: - Check Device JailBreak

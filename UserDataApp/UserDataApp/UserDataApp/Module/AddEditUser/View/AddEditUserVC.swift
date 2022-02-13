@@ -254,7 +254,6 @@ private extension AddEditUserVC {
             make.leading.equalTo(contentView).offset(22)
             make.trailing.equalTo(contentView).inset(22)
             make.bottom.equalTo(contentView).inset(100)
-            //            make.height.equalTo(330)
         }
         
         
@@ -384,15 +383,8 @@ private extension AddEditUserVC {
                 }
                 self.viewModel.imagepath.accept(filePath.path.lastPathComponent)
             case .remove:
-                do {
-                    let targetURL = URL(fileURLWithPath: self.viewModel.imagepath.value)
-                    if FileManager.default.fileExists(atPath: targetURL.path) {
-                        try FileManager.default.removeItem(at: targetURL)
-                    }
-                    self.viewModel.imagepath.accept("")
-                } catch {
-                    print(error.localizedDescription)
-                }
+                removeFile(self.viewModel.imagepath.value)
+                self.viewModel.imagepath.accept("")
             case .none:
                 break
             }

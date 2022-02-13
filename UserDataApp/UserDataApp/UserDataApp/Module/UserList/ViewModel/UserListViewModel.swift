@@ -43,14 +43,7 @@ extension UserListViewModel {
         users.forEach { user in
             // remove stored images
             if let imagepath = user.imagepath {
-                do {
-                    let targetURL = URL(fileURLWithPath:imagepath)
-                    if FileManager.default.fileExists(atPath: targetURL.path) {
-                        try FileManager.default.removeItem(at: targetURL)
-                    }
-                } catch {
-                    print(error.localizedDescription)
-                }
+                removeFile(imagepath)
             }
             // remove from coredata
             user.destroy()

@@ -113,6 +113,8 @@ private extension UserListVC {
         // Delete row
         userListTableView.rx.itemDeleted.asDriver()
             .drive(onNext: { [weak self] indexPath in
+                // remove image profile if any
+                removeFile(self?.viewModel.users.value[indexPath.row].value?.imagepath ?? "")
                 // remove from coredata
                 self?.viewModel.users.value[indexPath.row].value?.destroy()
                 // remove from table
