@@ -16,6 +16,12 @@ enum ValidationState {
     case invalid(String)
 }
 
+enum ProfileImageChanges {
+    case new
+    case remove
+    case none
+}
+
 class AddEditUserViewModel {
     var user: BehaviorRelay<User?> = .init(value: nil)
     
@@ -36,11 +42,13 @@ class AddEditUserViewModel {
     var companyName: BehaviorRelay<String> = .init(value: "")
     var catchPhrase: BehaviorRelay<String> = .init(value: "")
     var bs: BehaviorRelay<String> = .init(value: "")
+    
+    var profileImageChanges = ProfileImageChanges.none
 }
 
 //MARK: Public methods
 extension AddEditUserViewModel {
-    func saveData() -> ValidationState {
+    func saveData(image: UIImage? = nil) -> ValidationState {
         let valid = validate()
         
         switch valid {
@@ -54,6 +62,21 @@ extension AddEditUserViewModel {
                 user?.company = Company.new()
                 user?.address?.geo = Geo.new()
             }
+            
+            switch profileImageChanges {
+                
+            case .new:
+                guard let imageData = image?.jpegData(compressionQuality: 0.5), let filePath = saveImage(data: imageData,name: user?.identity) else {
+                    return .invalid("Error saving image")
+                }
+                imagepath.accept(filePath.path.lastPathComponent)
+            case .remove:
+                removeFile(imagepath.value)
+                imagepath.accept("")
+            case .none:
+                break
+            }
+            
             user?.imagepath = imagepath.value
             user?.name = name.value
             user?.username = username.value

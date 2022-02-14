@@ -14,11 +14,6 @@ import MapKit
 import LocationPicker
 import RxSwift
 
-enum ProfileImageChanges {
-    case new
-    case remove
-    case none
-}
 
 class AddEditUserVC: BaseViewController {
     
@@ -46,7 +41,7 @@ class AddEditUserVC: BaseViewController {
     private let saveButton = UIButton(type: .system)
     
     private var location: Location?
-    private var profileImageChanges = ProfileImageChanges.none
+    
     
     var isEdit = false
     var viewModel = AddEditUserViewModel()
@@ -374,36 +369,19 @@ private extension AddEditUserVC {
         // Save Button Action
         saveButton.action { [weak self] button in
             guard let self = self else { return }
-            
-            switch self.profileImageChanges {
-                
-            case .new:
-                guard let imageData = self.userProfileImageView.image?.jpegData(compressionQuality: 0.5), let filePath = saveImage(data: imageData,name: self.viewModel.user.value?.identity) else {
-                    return
-                }
-                self.viewModel.imagepath.accept(filePath.path.lastPathComponent)
-            case .remove:
-                removeFile(self.viewModel.imagepath.value)
-                self.viewModel.imagepath.accept("")
-            case .none:
-                break
-            }
-            
-            
-            switch self.viewModel.saveData() {
+            switch self.viewModel.saveData(image: self.userProfileImageView.image) {
             case .valid:
                 self.popVC()
             case .invalid(let error):
                 self.view.makeToast(error)
             }
-            
         }
         
         // Profile image tap
         userProfileImageView.addTapGestureRecognizer { [weak self] in
             self?.takeAndChoosePhoto(true) { [weak self] removeAction in
                 self?.userProfileImageView.image = UIImage.userPlaceholder()
-                self?.profileImageChanges = .remove
+                self?.viewModel.profileImageChanges = .remove
             }
         }
     }
@@ -424,7 +402,7 @@ extension AddEditUserVC: ChoosePicture, UIImagePickerControllerDelegate, UINavig
             return
         }
         let orientationFixedImage = newImage.fixOrientation()
-        profileImageChanges = .new
+        viewModel.profileImageChanges = .new
         userProfileImageView.image = orientationFixedImage
         
         picker.dismiss(animated: true)
